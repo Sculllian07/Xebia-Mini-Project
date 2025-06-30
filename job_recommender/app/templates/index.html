@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Recommendation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Resume-Based Job Recommendation</h1>
+    <form method="POST">
+        <textarea name="resume_text" rows="10" cols="80" placeholder="Paste your resume here..."></textarea><br><br>
+        <input type="submit" value="Recommend Job">
+    </form>
+
+    {% if resume_skills %}
+        <h2>Skills Found in Resume:</h2>
+        <ul>
+            {% for skill in resume_skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if top_job %}
+        <h2>Top Recommended Job Profile:</h2>
+        <p><strong>Job Title:</strong> {{ top_job.job_title }}</p>
+        <p><strong>Match Percentage:</strong> {{ top_job.match_percentage }}%</p>
+        <p><strong>Required Skills:</strong></p>
+        <ul>
+            {% for skill in top_job.required_skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+        <p><strong>Missing Skills:</strong></p>
+        <ul>
+            {% for skill in top_job.missing_skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if other_jobs %}
+        <h2>Other Recommended Jobs:</h2>
+        <ul>
+            {% for job in other_jobs %}
+                <li>{{ job.job_title }} — {{ job.match_percentage }}%</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
