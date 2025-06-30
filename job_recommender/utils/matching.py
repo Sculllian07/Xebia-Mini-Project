@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import os
 
-# ✅ Controlled list of real tech skills
+# Controlled list of real tech skills
 PREDEFINED_SKILLS = [
     "Python", "Java", "C++", "C", "SQL", "JavaScript", "HTML", "CSS", "React", "Node.js",
     "Django", "Flask", "Machine Learning", "Deep Learning", "Data Analysis",
